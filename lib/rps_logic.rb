@@ -28,17 +28,27 @@ class RPS
   end
 
   def wins?()
-    if @move || @move2 === 'rock' && move2 || @move === 'scissors'
+    if (@move === 'rock' || @move2 === 'rock') && (@move2 === 'scissors'|| @move === 'scissors')
       true
-    elsif @move || @move2 === 'scissors' && @move || move2 === 'paper'
+      winner?()
+    elsif (@move === 'scissors' || @move2 === 'scissors') && (@move === 'paper'|| @move2 === 'paper')
       true
-    elsif @move || @move2 === 'paper' && @move || move2 === 'rock'
+      winner?()
+    elsif (@move === 'paper' || @move2 === 'paper') && (@move === 'rock' || @move2 === 'rock')
       true
+      winner?()
     else
       false
     end
   end
 
+  def winner?()
+    if (@move === 'rock' && @move2 === 'scissors') || (@move === 'scissors' && @move2 === 'paper') || (@move === 'paper' && @move2 === 'rock')
+      return 'Player1 is the winner. Play again?'
+    else (@move2 === 'rock' && @move === 'scissors') || (@move2 === 'scissors' && @move === 'paper') || (@move2 === 'paper' && @move1 === 'rock')
+      return 'Computer wins. Play again?'
+    end
+  end
 end
 
 class Player
@@ -51,22 +61,10 @@ class Player
   end
 end
 
-#   def turn()
-#     script for get your move and you have 3 options "rock, paper, scissors"
-#   end
-# end
 
-
-# puts 'Player1, what is your name?'
-# name = gets.chomp
-# name = Player1.new(name)
-# puts "Hello #{name}!"
-
-# puts 'It is your turn. Rock, paper, or scissors?'
-# move = gets
-# player1.turn(value1)
-# player2.turn(value2)
-# win?(value1, value2)
-# wins?
-# puts '#{name} is the winner. Play again?'
-# 
+    # wins_value = false
+    # until wins_value === true do
+    #   makeMove(move)
+    #   computer_move()
+    #   wins_value = wins?()
+    # end

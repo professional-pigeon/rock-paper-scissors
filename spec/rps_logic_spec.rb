@@ -1,5 +1,6 @@
 require 'rspec'
 require 'rps_logic'
+require 'ruby_script'
 
 describe ('#rpslogic') do
   it("returns true if rock is the object and scissors is the argument") do
@@ -45,9 +46,9 @@ describe ('#rpslogic') do
     game = RPS.new()
     expect(game.makeMove('rock')).to(eq('rock'))
   end
-  # it("returns the winning player") do
-  #   game = RPS.new()
-  #   player1 = Play.new()
-  #   expect(game.winner?("paper", "rock")).to(eq('Player1'))
-  # || include('paper') || include('scissors')
+  it("returns the winning player") do
+    game = RPS.new()
+    player1 = Player.new("tom")
+    expect(game.winner?()).to(eq('Player1 is the winner. Play again?'))
+  end
 end
